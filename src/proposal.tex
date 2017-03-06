@@ -2,18 +2,18 @@
 
 One of the focus areas for DIANA is to ``establish infrastructure for a higher-level of collaborative analysis, building on the successful patterns used for the Higgs boson discovery''.
 A large component of this focus is statistical software.
-\code{RooFit}~\cite{Verkerke:2003ir} is one of the primary tools used now, but it is facing scalability challenges.
+\code{RooFit}~\cite{Verkerke:2003ir} is one of the primary tools used now but it is facing scalability challenges.
 In addition to processing speed, which is being addressed with GPU-based fitting approaches, we also face memory limitations as the combined statistical models grow in size.
-Thus it is critical to investigate more distributed models.\\
+Thus, it is critical to investigate more distributed models.\\
 
 Within only a couple of years, the rapid development of software libraries for numerical computations through data flow graphs (e.g., \code{TensorFlow}~\cite{tensorflow2015-whitepaper}, \code{Theano}~\cite{theano-full}, and \code{MXNet}~\cite{DBLP:journals/corr/ChenLLLWWXXZZ15}) has led to a fundamental change of paradigm in machine learning software.
-These libraries are designed around the concept that a numerical program can often equivalently be expressed as a graph, where nodes represent mathematical operations and edges represent the data communicated between them.
+These libraries are designed around the concept that a numerical program can often equivalently be expressed as a graph --- where nodes represent mathematical operations and edges represent the data communicated between them.
 Most notably, these libraries allow one to automatically deploy computation over one or more CPUs or GPUs within a single API, which makes it easy to maximize performance without specialized software expertise.\\
 
 While these frameworks have originally been developed for the purpose of deep learning research, they are usually general enough to be applicable in a wide variety of other domains.
 For this reason, the objective of this DIANA project is to conduct a feasibility study to answer whether statistical models used in particle physics (typically built with \code{RooFit} and \code{HistFactory}~\cite{Cranmer:2012sba}) could equivalently be expressed as computational graphs, to assess their capabilities and limits, and to determine how those frameworks would scale in terms of data and model parallelism.
 In addition, the study should also determine whether existing probabilistic programming frameworks based data flow graphs (e.g., \code{Edward}~\cite{tran2016edward} and \code{tensorprob}~\cite{tensorprob2016}) are applicable for particle physics statistical models.
-Where appropriate, the study should finally identify shortcomings, on which further software efforts could be dedicated.\\
+Where appropriate, the study should finally identify shortcomings on which further software efforts could be dedicated.\\
 
 Chien-Chin Huang is a computer science PhD student supported via DIANA.
 He is investigating the model and data parallelism in systems such as \code{TensorFlow}.
@@ -33,7 +33,7 @@ This DIANA fellowship would help remove that bottleneck and accelerate work to c
 	      	      \end{itemize}
 	      	\item Implement this template for the benchmark models with a \code{HistFactory} script (probably in \code{Python}).
 	      	      This will provide the \code{RooFit} benchmark.
-	      	\item Study of data flow graphs frameworks (e.g. \code{TensorFlow}, \code{Theano}, \code{MXNet}) or of probabilistic programming frameworks (e.g. \code{Edward}, \code{tensorprob}).
+	      	\item Study of data flow graphs frameworks (e.g., \code{TensorFlow}, \code{Theano}, \code{MXNet}) or of probabilistic programming frameworks (e.g., \code{Edward}, \code{tensorprob}).
 	      	\item Implementation of the benchmark models in one of the studied frameworks.
 	      	\item Benchmarks evaluating their data and model parallelism.
 	      \end{itemize}
