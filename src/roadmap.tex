@@ -1,0 +1,28 @@
+\section{Roadmap}
+
+\begin{itemize}
+	\item April --- May, 2017
+	      \begin{itemize}
+	      	\item Design of representative benchmarks models:
+	      	      \begin{itemize}
+	      	      	\item A template for binned models that is parametrized in terms of number of events, number of bins, number of channels, number of signal/background components, number of parameters of interest and nuisance parameters.
+	      	      	\item Establish a precise mathematical formulation that is implementation-independent.
+	      	      	      This will be based on the \code{HistFactory} schema.
+	      	      	\item Document the template model.
+	      	      \end{itemize}
+	      	\item Implement this template for the benchmark models with a \code{HistFactory} script (probably in \code{Python}).
+	      	      This will provide the \code{RooFit} benchmark.
+	      	\item Study of data flow graphs frameworks (e.g., \code{TensorFlow}, \code{Theano}, \code{MXNet}) or of probabilistic programming frameworks (e.g., \code{Edward}, \code{tensorprob}).
+	      \end{itemize}
+	\item June, 2017
+	      \begin{itemize}
+	      	\item Implementation of the benchmark models in one of the studied frameworks.
+	      	\item Benchmarks evaluating their data and model parallelism.
+	      \end{itemize}
+	\item July --- August, 2017
+	      \begin{itemize}
+	      	\item Technical report and recommendations for particle physics use cases.
+	      	\item Upstream software contributions to address the identified limitations (if any).
+	      	\item Development of/Contribution to a probabilistic framework (if time permits).
+	      \end{itemize}
+\end{itemize}
