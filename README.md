@@ -1,4 +1,4 @@
-# [DIANA Fellow](http://diana-hep.org/pages/fellows.html) proposal for Matthew Feickert: A study of data flow graphs frameworks for physics
+# [DIANA Fellow](http://diana-hep.org/pages/fellows.html) proposal for Matthew Feickert: A study of data flow graph frameworks for statistical models in particle physics
 
 ## Abstract
 
