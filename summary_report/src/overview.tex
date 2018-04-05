@@ -1,0 +1,20 @@
+\section{Project Description}
+
+One of the focus areas for DIANA~\cite{DIANA-proposal-2014} is to ``establish infrastructure for a higher-level of collaborative analysis, building on the successful patterns used for the Higgs boson discovery''.
+A large component of this focus is statistical software.
+\code{RooFit}~\cite{Verkerke:2003ir} is one of the primary tools used now, but it is facing scalability challenges.
+In addition to processing speed, which is being addressed with GPU-based fitting approaches, we also face memory limitations as the combined statistical models grow in size.
+Thus, it is critical to investigate more distributed models.\\
+
+Within only a couple of years, the rapid development of software libraries for numerical computations through data flow graphs (e.g., \code{TensorFlow}~\cite{tensorflow2015-whitepaper}, \code{Theano}~\cite{theano-full}, and \code{MXNet}~\cite{DBLP:journals/corr/ChenLLLWWXXZZ15}) has led to a fundamental change of paradigm in machine learning software.
+These libraries are designed around the concept that a numerical program can often equivalently be expressed as a graph --- where nodes represent mathematical operations and edges represent the data communicated between them.
+Most notably, these libraries allow one to automatically deploy computation over one or more CPUs or GPUs within a single API. This makes it easy to maximize performance without specialized software expertise.\\
+
+While these frameworks were originally developed for the purpose of deep learning research, they are usually general enough to be applicable in a wide variety of other domains.
+For this reason, the objective of this DIANA project --- conducted by Matthew Feickert under the mentorship of Gilles Louppe and Vince Croft --- is to investigate the pros and cons of implementing the statistical models used in particle physics with a different computational graph framework.
+As these models are typically built with \code{RooFit} and \code{HistFactory}~\cite{Cranmer:2012sba}, we first wish to establish reference benchmarks in these frameworks.
+Later in the project, we will assess the capabilities and limits of different frameworks and determine how they would scale in terms of data and model parallelism.
+In addition, the study should also determine whether existing probabilistic programming framework based data flow graphs (e.g., \code{Edward}~\cite{tran2016edward} and \code{tensorprob}~\cite{tensorprob2016}) are applicable for particle physics statistical models.
+Where appropriate, the study should finally identify shortcomings on which further software efforts could be dedicated.\\
+
+This DIANA fellowship would help remove that bottleneck and accelerate work to connect other DIANA projects like \code{Histogrammar}~\cite{histogrammar2017}.
