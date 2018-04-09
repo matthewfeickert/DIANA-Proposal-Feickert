@@ -1,4 +1,4 @@
-FILENAME = summary_report.tex
+FILENAME = summary_report
 
 date = $(shell date +%Y-%m-%d)
 output_file = draft_$(date).pdf
