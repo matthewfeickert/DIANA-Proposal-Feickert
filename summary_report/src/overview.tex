@@ -4,23 +4,18 @@ One of the focus areas for DIANA~\cite{DIANA-proposal-2014} is to ``establish in
 A large component of this focus is statistical software.
 \code{RooFit}~\cite{Verkerke:2003ir} is one of the primary tools used now, but it is facing scalability challenges.
 The ability for software libraries for numerical computations through data flow graphs (e.g., TensorFlow~\cite{tensorflow2015-whitepaper}, PyTorch~\cite{paszke2017automatic}, and MXNet~\cite{DBLP:journals/corr/ChenLLLWWXXZZ15}) to improve the performance of the statistical software was investigated in this project.
-These frameworks also allow for automatic gradient calculation to aid in the acceleration of fits.\\
-
-% Within only a couple of years, the rapid development of software libraries for numerical computations through data flow graphs (e.g., \code{TensorFlow}~\cite{tensorflow2015-whitepaper}, \code{Theano}~\cite{theano-full}, and \code{MXNet}~\cite{DBLP:journals/corr/ChenLLLWWXXZZ15}) has led to a fundamental change of paradigm in machine learning software.
-% These libraries are designed around the concept that a numerical program can often equivalently be expressed as a graph --- where nodes represent mathematical operations and edges represent the data communicated between them.
-% Most notably, these libraries allow one to automatically deploy computation over one or more CPUs or GPUs within a single API. This makes it easy to maximize performance without specialized software expertise.\\
+These frameworks also allow for automatic differentiation to aid in the speedup of fits.\\
 
 Under the mentorship of Gilles Louppe and Vince Croft, Matthew became familiar with and investigated the behavior and benefits of different computational graph frameworks, namely, declarative frameworks (e.g., TensorFlow) and imperative frameworks (e.g., PyTorch).
-While declarative frameworks offer XXX.
-Alternatively, imperative frameworks are often more easily used by scientists and researchers as they allow for ideas to be more quickly implemented and tested, at the loss of reusable graphs YYY.
-To this end, no particular framework was able to be easily chosen as a clear winner in use cases for high energy physics.
-Rather, comparisons of the performance of TensorFlow, PyTorch, and MXNet would be made in different scenarios.\\
+Declarative graph frameworks require the computational graph to be fully declared in advance, allowing for the graph to be compiled in a sublanguage virtual machine and then run in separate sessions.
+This offers the ability to efficiently reuse both memory and graphs.
+However, the declarative nature requires that for implementation of an idea a graph must always be implemented first, potentially slowing the exploratory analysis stage.
+Alternatively, imperative frameworks eagerly run computational graphs within the defining language in which the graph is written (i.e., the programming language itself is the execution engine).
+Imperative frameworks allow more easily for interactive and exploratory computing, though at the loss of reusable graphs.~\cite{Chintala:2302087}\\
 
-Partnering with Lukas Heinrich, who then further mentored and worked with Matthew, pyhf~\cite{lukas_heinrich_2018_1172961} --- a Python based implementation of the \code{HistFactory}~\cite{Cranmer:2012sba} spec in which different computational graph frameworks could be used as backends --- was developed.
-pyhf allows for quick and easy testing of the performance of the frameworks in different scenarios, given its easily understandable Pythonic API and ability to switch between computational graph backends with a single function call.
-In addition to implementing computational backends in TensorFlow, PyTorch, and MXNet, a NumPy backend was also implemented.\\
+After investigation, it was decided that the project scope should not be limited prematurely to a single framework, given that both declarative and imperative frameworks have clear use cases in high energy physics --- where the physicists writing the code tend to simultaneously embody the roles of software researcher, software engineer, and end user.
+Instead, comparisons of the performance of TensorFlow, PyTorch, and MXNet would be made in different scenarios.\\
 
-% As models in high energy are typically built with \code{RooFit} and \code{HistFactory}~\cite{Cranmer:2012sba}, we first wish to establish reference benchmarks in these frameworks.
-% Later in the project, we will assess the capabilities and limits of different frameworks and determine how they would scale in terms of data and model parallelism.
-% In addition, the study should also determine whether existing probabilistic programming framework based data flow graphs (e.g., \code{Edward}~\cite{tran2016edward} and \code{tensorprob}~\cite{tensorprob2016}) are applicable for particle physics statistical models.
-% Where appropriate, the study should finally identify shortcomings on which further software efforts could be dedicated.\\
+Partnering with Lukas Heinrich, who then assumed responsibility of further mentoring and work with Matthew, pyhf~\cite{lukas_heinrich_2018_1172961} --- a Python based implementation of the \texttt{HistFactory}~\cite{Cranmer:2012sba} spec in which different computational graph frameworks could be used as backends and optimizers --- was developed.
+The pyhf project easily allows for testing of the performance of the frameworks in different scenarios, given its easily understandable Pythonic API and ability to switch between computational graph backends with a single function call.
+In addition to implementing computational backends in TensorFlow, PyTorch, and MXNet, a NumPy based backend was also implemented.\\
