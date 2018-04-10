@@ -5,6 +5,10 @@ As a preliminary benchmark of the frameworks a one point CLs test was performed,
 The results are shown against each other in Figure~\ref{fig:benchmark_backends}.
 As a pure MXNet optimizer has not been implemented in pyhf at this time it has not yet been benchmarked, and so only backends that do have language specific optimizers have been compared to ROOT based HistFactory.
 
+The preliminary results show that the computational backends that support automatic differentiation and built in parallelism show promising scaling behavior as the nature of the statistical fits becomes more computational difficult.
+The optimizer for the NumPy pyhf backend is based on optimizers in SciPy, and while the NumPy backend optimizer does not currently have auto grad support it does show very good timing for lower computational difficulty problems.
+Given that pyhf allows for fluidity in the choice of backend, this demonstrates a possible use case for automatically switching from the low overhead NumPy backend to a computational graph based backend as computational difficulty rises.
+
 \begin{figure}
  \centering
  % Switch this out so can see the uncertainties
@@ -26,10 +30,10 @@ As a pure MXNet optimizer has not been implemented in pyhf at this time it has n
   \includegraphics[width=0.5\textwidth]{relative_times_root_log.eps}\label{fig:relative_time_root_HF}%
  }\hfil
  \subfigure[NumPy backend]{%
-  \includegraphics[width=0.5\textwidth]{relative_times_numpy_log.eps}\label{fig:relrelative_time_numpy}%
+  \includegraphics[width=0.5\textwidth]{relative_times_numpy_log.eps}\label{fig:relative_time_numpy}%
  }
  \subfigure[TensorFlow backend]{%
-  \includegraphics[width=0.5\textwidth]{relative_times_tensorflow_log.eps}\label{fig:relrelative_time_tensorflow}%
+  \includegraphics[width=0.5\textwidth]{relative_times_tensorflow_log.eps}\label{fig:relative_time_tensorflow}%
  }\hfil
  \subfigure[PyTorch backend]{%
   \includegraphics[width=0.5\textwidth]{relative_times_pytorch_log.eps}\label{fig:relative_time_pytorch}%

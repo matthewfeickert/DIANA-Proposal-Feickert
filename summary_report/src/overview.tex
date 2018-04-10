@@ -3,7 +3,7 @@
 One of the focus areas for DIANA~\cite{DIANA-proposal-2014} is to ``establish infrastructure for a higher-level of collaborative analysis, building on the successful patterns used for the Higgs boson discovery''.
 A large component of this focus is statistical software.
 \code{RooFit}~\cite{Verkerke:2003ir} is one of the primary tools used now, but it is facing scalability challenges.
-The ability for software libraries for numerical computations through data flow graphs (e.g., TensorFlow~\cite{tensorflow2015-whitepaper}, PyTorch~\cite{theano-full}, and MXNet~\cite{DBLP:journals/corr/ChenLLLWWXXZZ15}) to improve the performance of the statistical software was investigated in this project.
+The ability for software libraries for numerical computations through data flow graphs (e.g., TensorFlow~\cite{tensorflow2015-whitepaper}, PyTorch~\cite{paszke2017automatic}, and MXNet~\cite{DBLP:journals/corr/ChenLLLWWXXZZ15}) to improve the performance of the statistical software was investigated in this project.
 These frameworks also allow for automatic gradient calculation to aid in the acceleration of fits.\\
 
 % Within only a couple of years, the rapid development of software libraries for numerical computations through data flow graphs (e.g., \code{TensorFlow}~\cite{tensorflow2015-whitepaper}, \code{Theano}~\cite{theano-full}, and \code{MXNet}~\cite{DBLP:journals/corr/ChenLLLWWXXZZ15}) has led to a fundamental change of paradigm in machine learning software.
@@ -16,7 +16,7 @@ Alternatively, imperative frameworks are often more easily used by scientists an
 To this end, no particular framework was able to be easily chosen as a clear winner in use cases for high energy physics.
 Rather, comparisons of the performance of TensorFlow, PyTorch, and MXNet would be made in different scenarios.\\
 
-Partnering with Lukas Heinrich, who then further mentored and worked with Matthew, pyhf --- a Python based implementation of the \code{HistFactory}~\cite{Cranmer:2012sba} spec in which different computational graph frameworks could be used as backends --- was developed.
+Partnering with Lukas Heinrich, who then further mentored and worked with Matthew, pyhf~\cite{lukas_heinrich_2018_1172961} --- a Python based implementation of the \code{HistFactory}~\cite{Cranmer:2012sba} spec in which different computational graph frameworks could be used as backends --- was developed.
 pyhf allows for quick and easy testing of the performance of the frameworks in different scenarios, given its easily understandable Pythonic API and ability to switch between computational graph backends with a single function call.
 In addition to implementing computational backends in TensorFlow, PyTorch, and MXNet, a NumPy backend was also implemented.\\
 
