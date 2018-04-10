@@ -1,20 +1,26 @@
-\section{Project Description}
+\section{Project Overview}
 
 One of the focus areas for DIANA~\cite{DIANA-proposal-2014} is to ``establish infrastructure for a higher-level of collaborative analysis, building on the successful patterns used for the Higgs boson discovery''.
 A large component of this focus is statistical software.
 \code{RooFit}~\cite{Verkerke:2003ir} is one of the primary tools used now, but it is facing scalability challenges.
-In addition to processing speed, which is being addressed with GPU-based fitting approaches, we also face memory limitations as the combined statistical models grow in size.
-Thus, it is critical to investigate more distributed models.\\
+The ability for software libraries for numerical computations through data flow graphs (e.g., TensorFlow~\cite{tensorflow2015-whitepaper}, PyTorch~\cite{theano-full}, and MXNet~\cite{DBLP:journals/corr/ChenLLLWWXXZZ15}) to improve the performance of the statistical software was investigated in this project.
+These frameworks also allow for automatic gradient calculation to aid in the acceleration of fits.\\
 
-Within only a couple of years, the rapid development of software libraries for numerical computations through data flow graphs (e.g., \code{TensorFlow}~\cite{tensorflow2015-whitepaper}, \code{Theano}~\cite{theano-full}, and \code{MXNet}~\cite{DBLP:journals/corr/ChenLLLWWXXZZ15}) has led to a fundamental change of paradigm in machine learning software.
-These libraries are designed around the concept that a numerical program can often equivalently be expressed as a graph --- where nodes represent mathematical operations and edges represent the data communicated between them.
-Most notably, these libraries allow one to automatically deploy computation over one or more CPUs or GPUs within a single API. This makes it easy to maximize performance without specialized software expertise.\\
+% Within only a couple of years, the rapid development of software libraries for numerical computations through data flow graphs (e.g., \code{TensorFlow}~\cite{tensorflow2015-whitepaper}, \code{Theano}~\cite{theano-full}, and \code{MXNet}~\cite{DBLP:journals/corr/ChenLLLWWXXZZ15}) has led to a fundamental change of paradigm in machine learning software.
+% These libraries are designed around the concept that a numerical program can often equivalently be expressed as a graph --- where nodes represent mathematical operations and edges represent the data communicated between them.
+% Most notably, these libraries allow one to automatically deploy computation over one or more CPUs or GPUs within a single API. This makes it easy to maximize performance without specialized software expertise.\\
 
-While these frameworks were originally developed for the purpose of deep learning research, they are usually general enough to be applicable in a wide variety of other domains.
-For this reason, the objective of this DIANA project --- conducted by Matthew Feickert under the mentorship of Gilles Louppe and Vince Croft --- is to investigate the pros and cons of implementing the statistical models used in particle physics with a different computational graph framework.
-As these models are typically built with \code{RooFit} and \code{HistFactory}~\cite{Cranmer:2012sba}, we first wish to establish reference benchmarks in these frameworks.
-Later in the project, we will assess the capabilities and limits of different frameworks and determine how they would scale in terms of data and model parallelism.
-In addition, the study should also determine whether existing probabilistic programming framework based data flow graphs (e.g., \code{Edward}~\cite{tran2016edward} and \code{tensorprob}~\cite{tensorprob2016}) are applicable for particle physics statistical models.
-Where appropriate, the study should finally identify shortcomings on which further software efforts could be dedicated.\\
+Under the mentorship of Gilles Louppe and Vince Croft, Matthew became familiar with and investigated the behavior and benefits of different computational graph frameworks, namely, declarative frameworks (e.g., TensorFlow) and imperative frameworks (e.g., PyTorch).
+While declarative frameworks offer XXX.
+Alternatively, imperative frameworks are often more easily used by scientists and researchers as they allow for ideas to be more quickly implemented and tested, at the loss of reusable graphs YYY.
+To this end, no particular framework was able to be easily chosen as a clear winner in use cases for high energy physics.
+Rather, comparisons of the performance of TensorFlow, PyTorch, and MXNet would be made in different scenarios.\\
 
-This DIANA fellowship would help remove that bottleneck and accelerate work to connect other DIANA projects like \code{Histogrammar}~\cite{histogrammar2017}.
+Partnering with Lukas Heinrich, who then further mentored and worked with Matthew, pyhf --- a Python based implementation of the \code{HistFactory}~\cite{Cranmer:2012sba} spec in which different computational graph frameworks could be used as backends --- was developed.
+pyhf allows for quick and easy testing of the performance of the frameworks in different scenarios, given its easily understandable Pythonic API and ability to switch between computational graph backends with a single function call.
+In addition to implementing computational backends in TensorFlow, PyTorch, and MXNet, a NumPy backend was also implemented.\\
+
+% As models in high energy are typically built with \code{RooFit} and \code{HistFactory}~\cite{Cranmer:2012sba}, we first wish to establish reference benchmarks in these frameworks.
+% Later in the project, we will assess the capabilities and limits of different frameworks and determine how they would scale in terms of data and model parallelism.
+% In addition, the study should also determine whether existing probabilistic programming framework based data flow graphs (e.g., \code{Edward}~\cite{tran2016edward} and \code{tensorprob}~\cite{tensorprob2016}) are applicable for particle physics statistical models.
+% Where appropriate, the study should finally identify shortcomings on which further software efforts could be dedicated.\\
