@@ -1,0 +1,21 @@
+\section{Continued Work and Interest}\label{section:continued_work}
+
+As pyhf is the first fully differentiable instance of \texttt{HistFactory}, there is great potential for further speedup through refinement and use of the full parallelism and GPU hardware acceleration the different computational frameworks were designed for.
+There is ongoing work on the pyhf project to prepare it for full use.
+All work is outlined and tracked in the project and issue tracking associated with the pyhf GitHub page under the DIANA/HEP GitHub group.
+The most prevalent issues are summarized in the list below:
+
+\begin{itemize}
+ \item Finish completion of the optimizer for the MXNet backend
+ \item Provide a full suite of benchmarks
+ \item Implement full GPU acceleration support in the backends
+ \item Gain access to a GPU cluster and test the benchmark suite
+ \item Improve optimizers (provide alternatives to Newton's method)
+ \item Complete Sphinx based web documentation generated from the code
+ \item Add different interpolation schemes
+ \item Add more systematic variations
+\end{itemize}
+
+In addition, there has been interest in use of pyhf by members of the high energy physics phenomenology community in use of reinterpretation of experimental search results, given its easy to use API.
+The pyhf project already contains tutorial example Jupyter notebooks~\cite{Kluyver:2016aa} and exists in a ``Binderized'' environment~\cite{Binder} such that it is usable for examples through a web portal with no installation required.
+Additional example Jupyter notebooks are being planned and developed to make it easier to teach pyhf's API to new users.
