@@ -3,13 +3,13 @@
 One of the focus areas for DIANA~\cite{DIANA-proposal-2014} is to ``establish infrastructure for a higher-level of collaborative analysis, building on the successful patterns used for the Higgs boson discovery''.
 A large component of this focus is statistical software.
 \code{RooFit}~\cite{Verkerke:2003ir} is one of the primary tools used now, but it is facing scalability challenges.
-To address these issues, this fellowship project investigated the ability for software libraries for numerical computations using data flow graphs and automatic differentiation (e.g., TensorFlow~\cite{tensorflow2015-whitepaper}, PyTorch~\cite{paszke2017automatic}, and MXNet~\cite{DBLP:journals/corr/ChenLLLWWXXZZ15}) to improve the performance of the statistical software through parallelizing and speeding up statistical fits.\\
+To address these issues, this fellowship project investigated the ability of software libraries for numerical computations using data flow graphs and automatic differentiation (e.g., TensorFlow~\cite{tensorflow2015-whitepaper}, PyTorch~\cite{paszke2017automatic}, and MXNet~\cite{DBLP:journals/corr/ChenLLLWWXXZZ15}) to improve the performance of statistical fits through parallelism and GPU assisted speed up.\\
 
 Under the mentorship of Gilles Louppe and Vince Croft, Matthew became familiar with and investigated the behavior and benefits of different computational graph frameworks.
 Specifically, declarative frameworks (i.e., TensorFlow) and imperative frameworks (i.e., PyTorch and MXNet).
-Declarative graph frameworks require the computational graph to be fully declared in advance, allowing for the graph to be compiled in a sublanguage virtual machine and then run in separate sessions.
+Declarative frameworks require the computational graph to be fully declared in advance of computation, allowing for the graph to be compiled in a sublanguage virtual machine and then run in separate sessions.
 This offers the ability to efficiently reuse both memory and graphs.
-However, the declarative nature requires that for implementation of a new idea into the code a graph must always be implemented first, potentially slowing the exploratory analysis stage.
+However, the declarative nature requires that for implementation of a new idea into code a graph must always be implemented first, potentially slowing the exploratory analysis stage.
 Alternatively, imperative frameworks eagerly run computational graphs within the defining language in which the graph is written (i.e., the programming language itself is the execution engine).
 Imperative frameworks allow more easily for interactive and exploratory computing, though at the loss of reusable graphs.~\cite{Chintala:2302087}\\
 
@@ -17,6 +17,9 @@ After investigation, it was decided that the project scope should not be limited
 Instead, comparisons of the performance of TensorFlow, PyTorch, and MXNet would be made in different scenarios.\\
 
 Partnering with Lukas Heinrich, who then assumed responsibility of further mentoring and work with Matthew, pyhf~\cite{lukas_heinrich_2018_1172961} was developed.
-pyhf is a Python based implementation of the \texttt{HistFactory}~\cite{Cranmer:2012sba} spec that allows different computational graph frameworks to be used as backends and optimizers.
+pyhf is a Python based implementation of the \texttt{HistFactory}~\cite{Cranmer:2012sba} specification that allows different computational graph frameworks to be used as computational backends.
 The pyhf project easily allows for testing of the performance of the frameworks in different scenarios, given its easily understandable Pythonic API and ability to switch between computational graph backends with a single function call.
-In addition to supporting TensorFlow, PyTorch, and MXNet as computational backends, a NumPy based backend was also implemented.\\
+In addition to supporting TensorFlow, PyTorch, and MXNet as backends, a NumPy based backend was also implemented.
+Auto differentiable best fit optimizers were also implemented for the respective backends.
+The optimizers currently implement Newton's method, requiring the computationally expensive (in high dimensional space) inverse of the Hessian matrix.
+However, the use of the graph frameworks greatly mitigates this cost as the underlying libraries have been written for high performance in exactly these situations.

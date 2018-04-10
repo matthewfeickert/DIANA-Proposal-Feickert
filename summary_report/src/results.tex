@@ -1,19 +1,18 @@
 \section{Preliminary Results}\label{section:results}
 
 As a criteria of the project is to compare the performance of different frameworks against the performance of ROOT based \texttt{HistFactory} benchmarking of the different backends was carried out.
-As a preliminary benchmark of the frameworks a one point $\text{CL}_{s}$ test\footnote{$\text{CL}_{s}$ is defined as the ratio of a signal + background hypothesis $p$-value to $1$ minus the background only hypothesis $p$-value: $\text{CL}_{s} = p_{s+b}/\left(1-p_{b}\right)$.~\cite{Cowan:2010js}} was performed, in which the $p$-values of test statistics from the data and the ``Asimov'' data set are compared given the parameter of interest.~\cite{Cowan:2010js}
+As a preliminary benchmark of the frameworks a one point $\text{CL}_{s}$ test\footnote{$\text{CL}_{s}$ is defined as the ratio of the signal + background hypothesis $p$-value to $1$ minus the background only hypothesis $p$-value: $\text{CL}_{s} = p_{s+b}/\left(1-p_{b}\right)$.~\cite{Cowan:2010js}} was performed, in which the $p$-values of test statistics from the data and the ``Asimov'' data set are compared given the parameter of interest.~\cite{Cowan:2010js}
 The model used is a simple one in which every bin has the same content to ensure that the fit will complete.
 In lieu of model complexity large numbers of bins are given to simulate difficult conditions for the fit as each bin is uncorrelated and so represents an additional nuisance parameter.
 The results are shown against each other in Figure~\ref{fig:benchmark_backends}.
-As a pure MXNet optimizer has not been implemented in pyhf at this time it has not yet been benchmarked, and so only backends that do have language specific optimizers have been compared to ROOT based \texttt{HistFactory}.\\
+As a pure MXNet optimizer has not been fully implemented in pyhf at this time it has not yet been benchmarked, and so only backends that do have language specific optimizers have been compared to ROOT based \texttt{HistFactory}.\\
 
 The preliminary results show that the computational backends that support automatic differentiation and built in parallelism show promising scaling behavior as the nature of the statistical fits becomes more computational difficult, as seen in Figure~\ref{fig:relative_time}.
 The optimizer for the NumPy pyhf backend is based on optimizers in SciPy, and while the NumPy backend optimizer does not currently have automatic differentiation support it does show very good timing for lower computational difficulty problems.
-Given that pyhf allows for fluidity in the choice of backend, this demonstrates a possible use case for automatically switching from the low overhead NumPy backend to a computational graph based backend as computational difficulty rises.
+Given that pyhf allows for fluidity in the choice of backend, this demonstrates a possible use case for automatically switching from the low overhead NumPy backend to a graph based backend as computational difficulty rises.
 
 \begin{figure}
  \centering
- % Switch this out so can see the uncertainties
  \includegraphics[width=0.9\linewidth]{benchmark_times.pdf}
  \caption{Comparison of the mean time needed to complete a one point $\text{CL}_{s}$ test for ROOT \texttt{HistFactory} and the NumPy, TensorFlow, and PyTorch pyhf backends vs. the number of bins in the associated fit.
   The binning choices (number of nuisance parameters) used are $n_{\text{bins}} \in \left\{1, 10, 50, 100, 200, 500, 800, 1000\right\}$.
