@@ -1,5 +1,7 @@
 # [DIANA Fellow](http://diana-hep.org/pages/fellows.html) proposal for Matthew Feickert: A study of data flow graph frameworks for statistical models in particle physics
 
+[![DOI](https://zenodo.org/badge/83797541.svg)](https://zenodo.org/badge/latestdoi/83797541)
+
 ## Abstract
 
 The statistical software used for the last several years in particle physics is facing scalability challenges. In addition to processing speed, which is being addressed with GPU-based fitting approaches, we also face memory limitations as the combined statistical models grow in size. Thus, it is critical to investigate more distributed models for these computations.
